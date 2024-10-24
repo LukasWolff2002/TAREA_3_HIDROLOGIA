@@ -291,6 +291,137 @@ Aplicando las ecuaciones y procedimientos expuestos en el marco teórico, se lle
   \\ Fuente: elaboración propia.
 \end{table}
 
+\subsection{Pregunta 2}
+
+\subsubsection{Marco Teórico}
+
+La evapotranspiración de referencia se calcula utilizando la ecuación de Penman-Monteith, que estima la cantidad de agua que un cultivo podría perder por evaporación y transpiración bajo condiciones estándar:
+
+\begin{equation}
+  ETo = \frac{0.408 \Delta (R_n - G) + \gamma \frac{900}{T_{mean} + 273} U_2 (e_s - e_a)}{\Delta + \gamma (1 + 0.34 U_2)}
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $ETo$ es la evapotranspiración de referencia (mm/día).
+  \item $\Delta$ es la pendiente de la curva de presión de vapor (kPa/°C).
+  \item $R_n$ es la radiación neta en la superficie del cultivo (MJ/m²/día).
+  \item $G$ es el flujo de calor del suelo (MJ/m²/día).
+  \item $\gamma$ es la constante psicrométrica (kPa/°C).
+  \item $T_{mean}$ es la temperatura media diaria (°C).
+  \item $U_2$ es la velocidad del viento a 2 metros de altura (m/s).
+  \item $e_s$ es la presión de vapor de saturación (kPa).
+  \item $e_a$ es la presión de vapor real (kPa).
+\end{itemize}
+
+La presión de vapor de saturación ($e_s$) se determina mediante la siguiente ecuación:
+
+\begin{equation}
+  e_s = 0.6108 \exp \left( \frac{17.27 T_{mean}}{T_{mean} + 237.3} \right)
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $T_{mean}$ es la temperatura media diaria (°C).
+\end{itemize}
+
+La presión de vapor real ($e_a$) se calcula multiplicando la presión de vapor de saturación por la humedad relativa:
+
+\begin{equation}
+  e_a = e_s \left( \frac{HR}{100} \right)
+\end{equation}
+
+Para calcular la tasa de riego, se usa la siguiente ecuación:
+
+\begin{equation}
+  TR = \frac{ET_c - P_u - H}{n}
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $TR$ es la tasa de riego (mm/día).
+  \item $ET_c$ es la evapotranspiración del cultivo en el mes de máxima demanda (mm/día).
+  \item $P_u$ es la precipitación efectiva (mm/día).
+  \item $H$ es la humedad del suelo (mm/día).
+  \item $n$ es la eficiencia del sistema de riego.
+\end{itemize}
+
+Finalmente, la tasa de riego se convierte en caudal utilizando la siguiente expresión:
+
+\begin{equation}
+  Q = \frac{TR \cdot A}{3600}
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $Q$ es el caudal de diseño del sistema de riego (m³/s).
+  \item $TR$ es la tasa de riego (m/día).
+  \item $A$ es el área del cultivo (m²).
+  \item $3600$ es el número de segundos en una hora.
+\end{itemize}
+
+\subsubsection{Resultados}
+
+A continuación, se presentan los datos iniciales del problema.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|l|c|c|c|c|c|c|c|c|c|c|c|c|}
+  \hline
+  \textbf{Param} & \textbf{Unidad} & \textbf{Ene} & \textbf{Feb} & \textbf{Mar} & \textbf{Abr} & \textbf{May} & \textbf{Jun} & \textbf{Jul} & \textbf{Ago} & \textbf{Sep} & \textbf{Oct} & \textbf{Nov} & \textbf{Dic} \\ \hline
+  U2    & km/día       & 243 & 240 & 120 & 118 & 115 & 242 & 242 & 121 & 242 & 242 & 242 & 242 \\ \hline
+  Rn    & MJ/m²/día    & 25.8 & 18.6 & 11.4 & 11.9 & 7.9 & 6.6 & 7.6 & 10.4 & 11.9 & 17 & 20.2 & 24.7 \\ \hline
+  Tmin  & °C           & 11.6 & 11.3 & 9.8 & 8.1 & 7.4 & 6.0 & 5.3 & 5.8 & 7.0 & 8.2 & 9.2 & 10.7 \\ \hline
+  Tmax  & °C           & 26.7 & 26.4 & 25.6 & 22.6 & 19.2 & 16.7 & 16.7 & 18.1 & 19.6 & 21.8 & 25.4 & 26.2 \\ \hline
+  HR    & \%           & 71 & 74 & 74 & 76 & 79 & 79 & 79 & 79 & 79 & 75 & 72 & 70 \\ \hline
+  \end{tabular}
+  \caption{Parámetros meteorológicos de la estación de Quillota}
+\end{table}
+
+Aplicando las ecuaciones y procedimientos expuestos en el marco teórico, se llegaron a los siguientes resultados.
+
+Los resultados obtenidos para la evapotranspiración de referencia (ETo) en cada mes del año son los siguientes (en mm/día):
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Mes} & \textbf{ETo (mm/día)} \\ \hline
+Enero        & 3.57                  \\ \hline
+Febrero      & 2.96                  \\ \hline
+Marzo        & 1.86                  \\ \hline
+Abril        & 1.56                  \\ \hline
+Mayo         & 1.11                  \\ \hline
+Junio        & 1.35                  \\ \hline
+Julio        & 1.35                  \\ \hline
+Agosto       & 1.14                  \\ \hline
+Septiembre   & 1.67                  \\ \hline
+Octubre      & 2.28                  \\ \hline
+Noviembre    & 2.95                  \\ \hline
+Diciembre    & 3.48                  \\ \hline
+\end{tabular}
+\caption{Evapotranspiración de referencia (ETo) calculada para cada mes del año.}
+\end{table}
+
+El valor máximo de la evapotranspiración del cultivo (ETc), considerando el coeficiente de cultivo medio ($Kc_{med} = 0.7$), es:
+
+\begin{equation}
+ETc = 2.63 \, \text{mm/día}
+\end{equation}
+
+Finalmente, la tasa de riego calculada y expresada como caudal es:
+
+\begin{equation}
+TR = 5.85 \, \text{m}^3/\text{s}
+\end{equation}
+
+  
+
+
 
 
 
