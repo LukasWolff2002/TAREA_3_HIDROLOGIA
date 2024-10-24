@@ -170,8 +170,40 @@ HACER INTRO
 
 \subsection{Pregunta 1}
 
+\subsubsection{Marco Teórico}
 
+La presión de saturación del vapor de agua se determina mediante la ecuación de Clausius-Clapeyron:
+  
+\begin{equation}
+  e_s(T) = 611 \cdot e^{\left(\frac{17.27 \cdot T}{T + 237.3}\right)}
+\end{equation}
 
+La humedad relativa se determina mediante la siguiente ecuación:
+
+\begin{equation}
+  RH = \frac{e}{e_s} \cdot 100
+\end{equation}
+
+La radiación neta se determina mediante la siguiente ecuación:
+
+\begin{equation}
+  R_n = R_i \cdot (1 - \alpha) - R_{e}
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $R_n$ es la radiación neta.
+  \item $R_i$ es la radiación incidente.
+  \item $\alpha$ es el albedo.
+  \item $R_e$ es la radiación emitida.
+\end{itemize}
+
+Para obtener la evaporación con el método aerodinámico:
+
+\begin{equation}
+  E_r = \frac{R_n}{l_v \rho_w}
+\end{equation}
 
 
 
