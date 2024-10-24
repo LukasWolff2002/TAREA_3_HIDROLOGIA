@@ -184,7 +184,11 @@ La humedad relativa se determina mediante la siguiente ecuación:
   RH = \frac{e}{e_s} \cdot 100
 \end{equation}
 
-La radiación neta se determina mediante la siguiente ecuación:
+La radiación neta y emitida se determinan mediante las siguientes ecuaciones:
+
+\begin{equation}
+  Re = \varepsilon \sigma T^4
+\end{equation}
 
 \begin{equation}
   R_n = R_i \cdot (1 - \alpha) - R_{e}
@@ -199,19 +203,93 @@ Donde:
   \item $R_e$ es la radiación emitida.
 \end{itemize}
 
-Para obtener la evaporación con el método aerodinámico:
+Para obtener la evaporación con el método aerodinámico se usan las siguientes ecuaciones:
+
+\begin{equation}
+  E_a = B(e_{as} - e_a)
+\end{equation}
+  
+\begin{equation}
+  B = \frac{0.622 k^2 \rho_a u_2}{P \rho_w [\ln(Z_2 / Z_o)]^2}
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $E_a$ es la evaporación.
+  \item $B$ es el coeficiente de evaporación.
+  \item $e_{as}$ es la presión de saturación del vapor de agua.
+  \item $e_a$ es la presión de vapor de agua.
+  \item $k$ es la constante de von Karman.
+  \item $\rho_a$ es la densidad del aire.
+  \item $u_2$ es la velocidad del viento a 2 metros de altura.
+  \item $P$ es la presión atmosférica.
+  \item $\rho_w$ es la densidad del agua.
+  \item $Z_2$ es la altura a la que se mide la velocidad del viento.
+  \item $Z_o$ es la altura de rugosidad.
+\end{itemize}
+
+Por otro lado, para obtener la evaporación con el método de balance de energía se usó lo siguiente:
 
 \begin{equation}
   E_r = \frac{R_n}{l_v \rho_w}
 \end{equation}
 
+Donde:
 
+\begin{itemize}
+  \item $E_r$ es la evaporación.
+  \item $l_v$ es el calor latente de vaporización.
+  \item $\rho_w$ es la densidad del agua.
+\end{itemize}
 
+\subsubsection{Resultados}
 
+A continuación, se presentan los datos iniciales del problema.
 
+\begin{table}[H]
+  \centering
+  \caption{Datos iniciales del problema.}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Variable} & \textbf{Valor} & \textbf{Unidad}\\
+    \hline
+    $T_{agua}$ & 10 & °C\\
+    $T_{aire}$ & 20 & °C\\
+    $RH$ & 65 & \%\\
+    $R_i$ & 455,67 & $\frac{W}{m^2}$\\
+    $\alpha$ & 0.05 & - \\
+    $V_{viento}$ & 2,5 & $\frac{m}{s}$\\
+    $P_{atm}$ & 101 & kPa\\
+    $Z_2$ & 2.0 & m\\
+    $Z_o$ & 0.0003 & m\\
+    $l_v$ & $2.45 \times 10^6$ & $\frac{J}{kg}$\\
+    $\epsilon$ & 0,97 & -\\
+    $\sigma$ & $5.67 \times 10^{-8}$ & $\frac{W}{m^2K^4}$\\
+    $\rho_{aire}$ & 1,201 & $\frac{kg}{m^3}$\\
+    \hline
+  \end{tabular}
+  \\ Fuente: elaboración propia.
+\end{table}
 
+Aplicando las ecuaciones y procedimientos expuestos en el marco teórico, se llegaron a los siguientes resultados.
 
-
+\begin{table}[H]
+  \centering
+  \caption{Resultados de ambos métodos de cálculo.}
+  \begin{tabular}{|c|c|c|}
+      \hline
+      Variable & Aerodinámico & Balance Energético \\ \hline
+      $R_e$ & \multicolumn{2}{|c|}{$353,52 \frac{W}{m^2}$} \\ \hline
+      $R_{neta}$ & \multicolumn{2}{|c|}{$79,35 \frac{W}{m^2}$} \\ \hline
+      $e_s$ & $2,34 kPa$ & - \\ \hline
+      $e_a$ & $1,52 kPa$ & - \\ \hline
+      $B$ & $4,017 \times 10^{-8}$ & - \\ \hline
+      $E_v$ & $2,84 mm/dia$ & $2,80 mm/dia$ \\ \hline
+      $Error$ & \multicolumn{2}{|c|}{$1,51 \%$} \\ \hline
+  \end{tabular}
+  \\ Fuente: elaboración propia.
+\end{table}
 
 
 
